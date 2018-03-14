@@ -33,6 +33,8 @@ class AuthorPage extends React.Component {
     }
 }
 
+authors: React.PropTypes.array.isRequired;
+
 
 
 module.exports = AuthorPage;

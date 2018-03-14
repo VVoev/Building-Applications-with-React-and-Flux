@@ -24,4 +24,8 @@ const authorlist = (author) => {
     );
 };
 
+AuthorList.propTypes = {
+    authors: React.PropTypes.array.isRequired
+};
+
 export default authorlist;
