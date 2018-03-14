@@ -1,5 +1,6 @@
 const React = require('react');
 const authorApi = require('../api/authorApi');
+const AuthorList = require('./authorlist');
 
 class AuthorPage extends React.Component {
     constructor(props) {
@@ -26,15 +27,7 @@ class AuthorPage extends React.Component {
         return (
             <div>
                 <h1>Authors</h1>
-                <table className="table">
-                    <thead>
-                        <th>ID</th>
-                        <th>Name</th>
-                    </thead>
-                    <tbody>
-                        {this.state.authors.map(createAuthorRow)}
-                    </tbody>
-                </table>
+                <AuthorList authors={this.state.authors} />
             </div>
         );
     }

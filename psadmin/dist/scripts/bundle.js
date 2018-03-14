@@ -46922,7 +46922,43 @@ module.exports = About;
 
 },{"react":158}],162:[function(require,module,exports){
 const React = require('react');
+
+class AuthorList extends React.Component {
+
+    render() {
+        const createAuthorRow = (author) => {
+            return (
+                React.createElement("tr", {key: author.id}, 
+                    React.createElement("td", null, React.createElement("a", {href: `#/authors/${author.id}`}, author.id)), 
+                    React.createElement("td", null, author.firstName, " ", author.lastName)
+                )
+            );
+        };
+
+        return (
+            React.createElement("div", null, 
+                React.createElement("table", {className: "table"}, 
+                    React.createElement("thead", null, 
+                        React.createElement("th", null, "ID"), 
+                        React.createElement("th", null, "Name")
+                    ), 
+                    React.createElement("tbody", null, 
+                        this.props.authors.map(createAuthorRow)
+                    )
+                )
+            )
+        );
+    }
+}
+
+
+
+module.exports = AuthorList;
+
+},{"react":158}],163:[function(require,module,exports){
+const React = require('react');
 const authorApi = require('../api/authorApi');
+const AuthorList = require('./authorlist');
 
 class AuthorPage extends React.Component {
     constructor(props) {
@@ -46949,15 +46985,7 @@ class AuthorPage extends React.Component {
         return (
             React.createElement("div", null, 
                 React.createElement("h1", null, "Authors"), 
-                React.createElement("table", {className: "table"}, 
-                    React.createElement("thead", null, 
-                        React.createElement("th", null, "ID"), 
-                        React.createElement("th", null, "Name")
-                    ), 
-                    React.createElement("tbody", null, 
-                        this.state.authors.map(createAuthorRow)
-                    )
-                )
+                React.createElement(AuthorList, {authors: this.state.authors})
             )
         );
     }
@@ -46967,7 +46995,7 @@ class AuthorPage extends React.Component {
 
 module.exports = AuthorPage;
 
-},{"../api/authorApi":159,"react":158}],163:[function(require,module,exports){
+},{"../api/authorApi":159,"./authorlist":162,"react":158}],164:[function(require,module,exports){
 const React = require('react');
 
 class Header extends React.Component {
@@ -46992,7 +47020,7 @@ class Header extends React.Component {
 
 module.exports = Header;
 
-},{"react":158}],164:[function(require,module,exports){
+},{"react":158}],165:[function(require,module,exports){
 const React = require('react');
 
 class Home extends React.Component {
@@ -47013,7 +47041,7 @@ class Home extends React.Component {
 
 module.exports = Home;
 
-},{"react":158}],165:[function(require,module,exports){
+},{"react":158}],166:[function(require,module,exports){
 const $ = jQuery = require('jquery');
 const React = require('react');
 
@@ -47053,4 +47081,4 @@ const render = () => {
 window.addEventListener('hashchange', render);
 render();
 
-},{"./components/aboutpage":161,"./components/authorpage":162,"./components/header":163,"./components/homePage.js":164,"jquery":1,"react":158}]},{},[165]);
+},{"./components/aboutpage":161,"./components/authorpage":163,"./components/header":164,"./components/homePage.js":165,"jquery":1,"react":158}]},{},[166]);
