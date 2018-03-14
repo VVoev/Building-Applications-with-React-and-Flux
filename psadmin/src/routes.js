@@ -1,14 +1,17 @@
+
 const React = require('react');
 const Router = require('react-router');
 
-const { DefaultRoute, Route } = Router;
+const { DefaultRoute, Route, NotFoundRoute, Redirect } = Router;
 
 const routes = (
     <Route name="app" path="/" handler={require('./components/app')}>
-        <Route name="home" handler={require('./components/homepage')} />
-        <Route name="authors" handler={require('./components/authorpage')} />
-        <Route name="about" handler={require('./components/aboutPage')} />
+        <DefaultRoute handler={require('./components/homePage')}/>
+        <Route name="authors" handler={require('./components/authors/authorPage')}/>
+        <Route name="about" handler={require('./components/about/aboutPage')}/>
+        <NotFoundRoute handler={require('./components/common/notFoundPage')}/>
+        <Redirect from="about-us" to="about"/>
     </Route>
 );
 
-module.exports = routes; 
+module.exports = routes;
