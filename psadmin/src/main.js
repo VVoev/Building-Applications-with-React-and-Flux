@@ -3,7 +3,8 @@ const React = require('react');
 
 const Home = require('./components/homePage.js');
 const About = require('./components/aboutpage');
-const Header = require('./components/header')
+const Header = require('./components/header');
+const AuthorPage = require('./components/authorpage');
 
 class App extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
 
         switch (this.props.route) {
             case 'about': ChildComponent = About; break;
+            case 'authors': ChildComponent = AuthorPage; break;
             default: ChildComponent = Home; break;
         }
 
