@@ -51030,7 +51030,7 @@ const AuthorActions = {
 
 module.exports = AuthorActions;
 
-},{"../api/authorApi":206,"../constants/actionTypes":230,"../dispatcher/appDispatcher":231}],204:[function(require,module,exports){
+},{"../api/authorApi":207,"../constants/actionTypes":231,"../dispatcher/appDispatcher":232}],204:[function(require,module,exports){
 const Dispatcher = require('../dispatcher/appDispatcher');
 const CourseApi = require('../api/courseApi');
 const actionTypes = require('../constants/actionTypes');
@@ -51054,7 +51054,31 @@ const CourseActions = {
 
 module.exports = CourseActions;
 
-},{"../api/courseApi":208,"../constants/actionTypes":230,"../dispatcher/appDispatcher":231}],205:[function(require,module,exports){
+},{"../api/courseApi":209,"../constants/actionTypes":231,"../dispatcher/appDispatcher":232}],205:[function(require,module,exports){
+const Dispatcher = require('../dispatcher/appDispatcher');
+const FanApi = require('../api/fanApi');
+const actionTypes = require('../constants/actionTypes');
+
+const CourseActions = {
+    createFan(fan) {
+        const newFan = FanApi.saveFan(fan);
+        Dispatcher.dispatch({
+            actionType: actionTypes.CREATE_FAN,
+            data: newFan,
+        });
+    },
+    deleteFan(fanId) {
+        FanApi.deleteFan(fanId);
+        Dispatcher.dispatch({
+            actionType: actionTypes.DELETE_FAN,
+            data: fanId,
+        })
+    }
+};
+
+module.exports = CourseActions;
+
+},{"../api/fanApi":211,"../constants/actionTypes":231,"../dispatcher/appDispatcher":232}],206:[function(require,module,exports){
 
 const Dispatcher = require('../dispatcher/appDispatcher');
 const ActionTypes = require('../constants/actionTypes');
@@ -51077,7 +51101,7 @@ const InitializeActions = {
 
 module.exports = InitializeActions;
 
-},{"../api/authorApi":206,"../api/courseApi":208,"../api/fanApi":210,"../constants/actionTypes":230,"../dispatcher/appDispatcher":231}],206:[function(require,module,exports){
+},{"../api/authorApi":207,"../api/courseApi":209,"../api/fanApi":211,"../constants/actionTypes":231,"../dispatcher/appDispatcher":232}],207:[function(require,module,exports){
 "use strict";
 
 //This file is mocking a web API by hitting hard coded data.
@@ -51129,7 +51153,7 @@ var AuthorApi = {
 
 module.exports = AuthorApi;
 
-},{"./authorData":207,"lodash":6}],207:[function(require,module,exports){
+},{"./authorData":208,"lodash":6}],208:[function(require,module,exports){
 module.exports = {
 	authors: 
 	[
@@ -51151,7 +51175,7 @@ module.exports = {
 	]
 };
 
-},{}],208:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 "use strict";
 
 //This file is mocking a web API by hitting hard coded data.
@@ -51200,7 +51224,7 @@ var CourseApi = {
 
 module.exports = CourseApi;
 
-},{"./courseData":209,"lodash":6}],209:[function(require,module,exports){
+},{"./courseData":210,"lodash":6}],210:[function(require,module,exports){
 module.exports = {
 	courses: [
 		{  
@@ -51250,7 +51274,7 @@ module.exports = {
 	]
 };
 
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 "use strict";
 
 //This file is mocking a web API by hitting hard coded data.
@@ -51299,7 +51323,7 @@ var FansApi = {
 
 module.exports = FansApi;
 
-},{"./fanData":211,"lodash":6}],211:[function(require,module,exports){
+},{"./fanData":212,"lodash":6}],212:[function(require,module,exports){
 module.exports = {
     fans:
         [
@@ -51321,7 +51345,7 @@ module.exports = {
         ]
 };
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 const React = require('react');
 
 class About extends React.Component {
@@ -51360,7 +51384,7 @@ class About extends React.Component {
 
 module.exports = About;
 
-},{"react":201}],213:[function(require,module,exports){
+},{"react":201}],214:[function(require,module,exports){
 const React = require('react');
 
 const Home = require('./homePage');
@@ -51384,7 +51408,7 @@ class App extends React.Component {
 
 module.exports = App;
 
-},{"./common/header":218,"./homePage":229,"react":201,"react-router":32}],214:[function(require,module,exports){
+},{"./common/header":219,"./homePage":230,"react":201,"react-router":32}],215:[function(require,module,exports){
 const React = require('react');
 const Input = require('../common/textInput');
 
@@ -51414,7 +51438,7 @@ AuthorForm.propTypes = {
 
 module.exports = AuthorForm;
 
-},{"../common/textInput":221,"react":201}],215:[function(require,module,exports){
+},{"../common/textInput":222,"react":201}],216:[function(require,module,exports){
 const React = require('react');
 const { Link } = require('react-router');
 const toastr = require('toastr');
@@ -51463,7 +51487,7 @@ AuthorList.propTypes = {
 
 module.exports = AuthorList;
 
-},{"../../actions/authorActions":203,"react":201,"react-router":32,"toastr":202}],216:[function(require,module,exports){
+},{"../../actions/authorActions":203,"react":201,"react-router":32,"toastr":202}],217:[function(require,module,exports){
 const React = require('react');
 const AuthorList = require('./authorList');
 const AuthorStore = require('../../stores/authorStore');
@@ -51508,7 +51532,7 @@ class AuthorPage extends React.Component {
 
 module.exports = AuthorPage;
 
-},{"../../actions/authorActions":203,"../../stores/authorStore":234,"./authorList":215,"react":201,"react-router":32}],217:[function(require,module,exports){
+},{"../../actions/authorActions":203,"../../stores/authorStore":235,"./authorList":216,"react":201,"react-router":32}],218:[function(require,module,exports){
 const React = require('react');
 const AuthorForm = require('./authorForm');
 const AuthorActions = require('../../actions/authorActions');
@@ -51614,7 +51638,7 @@ const ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
 
 module.exports = ManageAuthorPage;
 
-},{"../../actions/authorActions":203,"../../stores/authorStore":234,"./authorForm":214,"react":201,"react-router":32,"toastr":202}],218:[function(require,module,exports){
+},{"../../actions/authorActions":203,"../../stores/authorStore":235,"./authorForm":215,"react":201,"react-router":32,"toastr":202}],219:[function(require,module,exports){
 const React = require('react');
 const { Link } = require('react-router');
 
@@ -51642,7 +51666,7 @@ class Header extends React.Component {
 
 module.exports = Header;
 
-},{"react":201,"react-router":32}],219:[function(require,module,exports){
+},{"react":201,"react-router":32}],220:[function(require,module,exports){
 const React = require('react');
 const { Link } = require('react-router');
 
@@ -51664,7 +51688,7 @@ class NotFoundPage extends React.Component {
 
 module.exports = NotFoundPage;
 
-},{"react":201,"react-router":32}],220:[function(require,module,exports){
+},{"react":201,"react-router":32}],221:[function(require,module,exports){
 const React = require('react');
 
 class TextDropdown extends React.Component {
@@ -51692,7 +51716,7 @@ class TextDropdown extends React.Component {
 
 module.exports = TextDropdown;
 
-},{"react":201}],221:[function(require,module,exports){
+},{"react":201}],222:[function(require,module,exports){
 const React = require('react');
 
 class TextInput extends React.Component {
@@ -51721,7 +51745,7 @@ class TextInput extends React.Component {
 
 module.exports = TextInput;
 
-},{"react":201}],222:[function(require,module,exports){
+},{"react":201}],223:[function(require,module,exports){
 const React = require('react');
 const Input = require('../common/textInput');
 const Dropdown = require('../common/textDropdown');
@@ -51746,7 +51770,7 @@ class CourseForm extends React.Component {
 
 module.exports = CourseForm;
 
-},{"../common/textDropdown":220,"../common/textInput":221,"react":201}],223:[function(require,module,exports){
+},{"../common/textDropdown":221,"../common/textInput":222,"react":201}],224:[function(require,module,exports){
 const React = require('react');
 const { Link } = require('react-router');
 const CourseActions = require('../../actions/courseActions');
@@ -51795,7 +51819,7 @@ class CourseList extends React.Component {
 
 module.exports = CourseList;
 
-},{"../../actions/courseActions":204,"react":201,"react-router":32}],224:[function(require,module,exports){
+},{"../../actions/courseActions":204,"react":201,"react-router":32}],225:[function(require,module,exports){
 
 const React = require('react');
 const CourseApi = require('../../api/courseApi');
@@ -51839,7 +51863,7 @@ class CoursePage extends React.Component {
 
 module.exports = CoursePage;
 
-},{"../../api/courseApi":208,"../../stores/courseStore":235,"./courseList":223,"react":201,"react-router":32}],225:[function(require,module,exports){
+},{"../../api/courseApi":209,"../../stores/courseStore":236,"./courseList":224,"react":201,"react-router":32}],226:[function(require,module,exports){
 const React = require('react');
 const CourseForm = require('./courseForm');
 const AuthorStore = require('../../stores/authorStore');
@@ -51937,8 +51961,10 @@ const ManageCoursePage = React.createClass({displayName: "ManageCoursePage",
 
 module.exports = ManageCoursePage;
 
-},{"../../actions/courseActions":204,"../../stores/authorStore":234,"../../stores/courseStore":235,"./courseForm":222,"react":201,"react-router":32,"toastr":202}],226:[function(require,module,exports){
+},{"../../actions/courseActions":204,"../../stores/authorStore":235,"../../stores/courseStore":236,"./courseForm":223,"react":201,"react-router":32,"toastr":202}],227:[function(require,module,exports){
 const React = require('react');
+const FansActions = require('../../actions/fanActions');
+const toastr = require('toastr');
 
 
 class FansList extends React.Component {
@@ -51946,11 +51972,20 @@ class FansList extends React.Component {
         super(props);
     }
 
+    deleteFan(fanId, event) {
+        event.preventDefault();
+        FansActions.deleteFan(fanId);
+        toastr.success("Fan Deleted Succesfully");
+    }
+
     render() {
         const createFanRow = (fan) => {
             return (
                 React.createElement("tr", {key: fan.id}, 
-                    React.createElement("td", null, fan.firstName, " ", fan.lastName, " ", fan.nickName)
+                    React.createElement("td", null, React.createElement("a", {href: "#", onClick: (event) => this.deleteFan(fan.id, event)}, "Delete")), 
+                    React.createElement("td", null, fan.firstName), 
+                    React.createElement("td", null, fan.lastName), 
+                    React.createElement("td", null, fan.nickName)
                 )
             )
         }
@@ -51962,10 +51997,10 @@ class FansList extends React.Component {
                     React.createElement("th", null, "FirstName"), 
                     React.createElement("th", null, "LastName"), 
                     React.createElement("th", null, "NickName")
+                ), 
+                React.createElement("tbody", null, 
+                    this.props.fans.map(createFanRow)
                 )
-                /* <tbody>
-                    {this.props.fans.map(createFanRow)}
-                </tbody> */
             )
         );
     }
@@ -51973,22 +52008,40 @@ class FansList extends React.Component {
 
 module.exports = FansList;
 
-},{"react":201}],227:[function(require,module,exports){
+},{"../../actions/fanActions":205,"react":201,"toastr":202}],228:[function(require,module,exports){
 const React = require('react');
 const FanList = require('./fansList')
+
+const FansStore = require('../../stores/fanStore');
+const FansActions = require('../../actions/fanActions');
 
 const { Link } = require('react-router');
 
 class FansPage extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            fans: FansStore.getAllFans()
+        };
+    }
+    _onChange() {
+        this.setState({
+            authors: FansStore.getAllFans()
+        });
+    }
+    componentWillMount() {
+        FansStore.addChangeListener(this._onChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        FansStore.removeChangeListener(this._onChange.bind(this));
     }
     render() {
         return (
             React.createElement("div", null, 
                 React.createElement("h1", null, "Fans Page"), 
                 React.createElement(Link, {to: "addFan", className: "btn btn-default"}, "Add Fans"), 
-                React.createElement(FanList, null)
+                React.createElement(FanList, {fans: this.state.fans})
             )
         );
     }
@@ -51996,7 +52049,7 @@ class FansPage extends React.Component {
 
 module.exports = FansPage;
 
-},{"./fansList":226,"react":201,"react-router":32}],228:[function(require,module,exports){
+},{"../../actions/fanActions":205,"../../stores/fanStore":237,"./fansList":227,"react":201,"react-router":32}],229:[function(require,module,exports){
 const React = require('react');
 const toastr = require('toastr');
 const { Navigation } = require('react-router');
@@ -52013,7 +52066,7 @@ const ManageFansPage = React.createClass({displayName: "ManageFansPage",
 
 module.exports = ManageFansPage;
 
-},{"react":201,"react-router":32,"toastr":202}],229:[function(require,module,exports){
+},{"react":201,"react-router":32,"toastr":202}],230:[function(require,module,exports){
 const React = require('react');
 const { Link } = require('react-router');
 
@@ -52037,7 +52090,7 @@ class Home extends React.Component {
 
 module.exports = Home;
 
-},{"react":201,"react-router":32}],230:[function(require,module,exports){
+},{"react":201,"react-router":32}],231:[function(require,module,exports){
 module.exports = {
     CREATE_AUTHOR: 'CREATE_AUTHOR',
     INITIALIZE: 'INITIALIZE',
@@ -52049,12 +52102,12 @@ module.exports = {
     DELETE_FAN: 'DELETE_FAN',
 };
 
-},{}],231:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 const { Dispatcher } = require('flux');
 
 module.exports = new Dispatcher();
 
-},{"flux":2}],232:[function(require,module,exports){
+},{"flux":2}],233:[function(require,module,exports){
 const $ = jQuery = require('jquery');
 const React = require('react');
 const Router = require('react-router');
@@ -52067,7 +52120,7 @@ Router.run(routes, (Handler) => {
     React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 
-},{"./actions/initializeActions":205,"./routes":233,"jquery":5,"react":201,"react-router":32}],233:[function(require,module,exports){
+},{"./actions/initializeActions":206,"./routes":234,"jquery":5,"react":201,"react-router":32}],234:[function(require,module,exports){
 
 const React = require('react');
 const Router = require('react-router');
@@ -52084,6 +52137,7 @@ const routes = (
         React.createElement(Route, {name: "addCourse", path: "course", handler: require('./components/courses/manageCoursePage')}), 
         React.createElement(Route, {name: "manageCourse", path: "course/:id", handler: require('./components/courses/manageCoursePage')}), 
         React.createElement(Route, {name: "manageAuthor", path: "author/:id", handler: require('./components/authors/manageAuthorPage')}), 
+        React.createElement(Route, {name: "manageFan", path: "fan/:id", handler: require('./components/fans/manageFansPage')}), 
         React.createElement(Route, {name: "fans", handler: require('./components/fans/fansPage')}), 
         React.createElement(Route, {name: "addFan", path: "fan", handler: require('./components/fans/manageFansPage')}), 
         React.createElement(NotFoundRoute, {handler: require('./components/common/notFoundPage')}), 
@@ -52095,7 +52149,7 @@ const routes = (
 
 module.exports = routes;
 
-},{"./components/about/aboutPage":212,"./components/app":213,"./components/authors/authorPage":216,"./components/authors/manageAuthorPage":217,"./components/common/notFoundPage":219,"./components/courses/coursePage":224,"./components/courses/manageCoursePage":225,"./components/fans/fansPage":227,"./components/fans/manageFansPage":228,"./components/homePage":229,"react":201,"react-router":32}],234:[function(require,module,exports){
+},{"./components/about/aboutPage":213,"./components/app":214,"./components/authors/authorPage":217,"./components/authors/manageAuthorPage":218,"./components/common/notFoundPage":220,"./components/courses/coursePage":225,"./components/courses/manageCoursePage":226,"./components/fans/fansPage":228,"./components/fans/manageFansPage":229,"./components/homePage":230,"react":201,"react-router":32}],235:[function(require,module,exports){
 const Dispatcher = require('../dispatcher/appDispatcher');
 const ActionTypes = require('../constants/actionTypes');
 const { EventEmitter}  = require('events');
@@ -52150,7 +52204,7 @@ Dispatcher.register((action) => {
 });
 
 module.exports = AuthorStore;
-},{"../constants/actionTypes":230,"../dispatcher/appDispatcher":231,"events":1}],235:[function(require,module,exports){
+},{"../constants/actionTypes":231,"../dispatcher/appDispatcher":232,"events":1}],236:[function(require,module,exports){
 const Dispatcher = require('../dispatcher/appDispatcher');
 const ActionTypes = require('../constants/actionTypes');
 const { EventEmitter}  = require('events');
@@ -52200,4 +52254,55 @@ Dispatcher.register((action) => {
 });
 
 module.exports = CourseStore;
-},{"../constants/actionTypes":230,"../dispatcher/appDispatcher":231,"events":1}]},{},[232]);
+},{"../constants/actionTypes":231,"../dispatcher/appDispatcher":232,"events":1}],237:[function(require,module,exports){
+const Dispatcher = require('../dispatcher/appDispatcher');
+const ActionTypes = require('../constants/actionTypes');
+const { EventEmitter } = require('events');
+
+const CHANGE_EVENT = 'change';
+
+let fans = [];
+
+const FansStore = Object.assign({}, EventEmitter.prototype, {
+    addChangeListener(callback) {
+        this.on(CHANGE_EVENT, callback);
+    },
+    removeChangeListener(callback) {
+        this.removeListener(CHANGE_EVENT, callback);
+    },
+    emitChange(callback) {
+        this.emit(CHANGE_EVENT);
+    },
+    getAllFans() {
+        return fans;
+    },
+    getFanById(id) {
+        return fans.find(a => a.id === id) || {};
+    }
+});
+
+Dispatcher.register((action) => {
+    switch (action.actionType) {
+        case ActionTypes.CREATE_FAN:
+            fans.push(action.data);
+            FansStore.emitChange();
+            break;
+        case ActionTypes.INITIALIZE:
+            fans = action.initialData.fans;
+            FansStore.emitChange();
+            break;
+        case ActionTypes.DELETE_FAN:
+            const fandId = action.data;
+            const targetIndex = fans.findIndex(c => c.id === fandId);
+            if (targetIndex >= 0) {
+                fans.splice(targetIndex, 1);
+                FansStore.emitChange();
+            }
+            break;
+        default: break;
+    }
+});
+
+module.exports = FansStore;
+
+},{"../constants/actionTypes":231,"../dispatcher/appDispatcher":232,"events":1}]},{},[233]);
