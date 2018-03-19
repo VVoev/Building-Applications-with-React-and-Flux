@@ -4,20 +4,6 @@ class About extends React.Component {
     constructor(props) {
         super(props);
     }
-    
-    static willTransitionTo(transition, params, query, callback) {
-        if(!confirm('Are you sure you want to read a page that boring?')) {
-            transition.abort();
-        } else {
-            callback();
-        }
-    }
-
-    static willTransitionFrom(transition, component) {
-        if(!confirm('Are you sure you leave a page that exiting')) {
-            transition.abort();
-        }
-    }
 
     render() {
         return (
@@ -37,6 +23,14 @@ class About extends React.Component {
                 </p>
             </div>
         );
+    }
+
+    static willTransitionTo(transition, params, query, callback) {
+        if(!confirm('Are you sure you want to read a page that boring?')) {
+            transition.abort();
+        } else {
+            callback();
+        }
     }
 }
 

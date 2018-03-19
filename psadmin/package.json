@@ -2,9 +2,10 @@
   "name": "BuildingApplicationsWithReactAndFlux",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/BorislavBorisov22/BuildingApplicationsWithReactAndFlux.git",
-  "author": "BorislavBorisov22 <borislavborisov22@abv.bg>",
   "license": "MIT",
+  "scripts": {
+    "start": "gulp"
+  },
   "dependencies": {
     "bootstrap": "3.3.5",
     "browserify": "11.0.1",
@@ -18,6 +19,7 @@
     "react": "0.13.3",
     "react-router": "0.13.3",
     "reactify": "1.1.1",
+    "toastr": "2.1.0",
     "vinyl-source-stream": "1.1.0"
   }
 }
